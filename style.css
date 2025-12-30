@@ -1,0 +1,23 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #a78bfa;
+    --primary-dark: #8a5cf6f4;
+    --primary-light: #c4b5fd;
+    --bg-dark: darkgray;
+}
+
+body {
+    background-color: var(--primary-dark);
+    overflow: hidden;
+    text-align: center;
+}
+
+#myCanvas{
+    background-color: var(--primary-color);
+}
+
