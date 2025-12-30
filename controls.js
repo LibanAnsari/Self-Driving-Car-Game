@@ -1,11 +1,21 @@
 class Controls{
-    constructor(){
+    constructor(type){
         this.forward = false;
         this.left = false;
         this.right = false;
         this.reverse = false;
 
-        this.#addKeyboardListener(); // this is a private listner, cannot be accessed outside the Control class
+        // allows controls to the main car only
+        switch(type){
+            case "KEYS":
+                this.#addKeyboardListener(); // this is a private listner, cannot be accessed outside the Control class
+                break;
+            case "DUMMY":
+                this.forward = true;
+                break;
+            default:
+                break;
+        }
     }
 
     #addKeyboardListener(){

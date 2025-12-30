@@ -22,7 +22,7 @@ class Road{
         ];
     }
 
-    getLaneCenter(laneIndex){
+    getLaneCenter(laneIndex){ // returns x value
         const laneWidth = this.width / this.laneCount;
         return this.left + laneWidth / 2 + 
                 Math.min(Math.max(0, laneIndex), this.laneCount - 1)*laneWidth;

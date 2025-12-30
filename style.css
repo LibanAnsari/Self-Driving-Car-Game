@@ -8,7 +8,7 @@
     --primary-color: #a78bfa;
     --primary-dark: #8a5cf6f4;
     --primary-light: #c4b5fd;
-    --bg-dark: darkgray;
+    --bg-dark: rgb(52, 6, 62);
 }
 
 body {
@@ -17,7 +17,16 @@ body {
     text-align: center;
 }
 
-#myCanvas{
+.container{
+    /* display: flex;
+    justify-content: space-around;
+    align-items:center; */
+}
+
+#carCanvas{
     background-color: var(--primary-color);
 }
 
+#networkCanvas{
+    background-color: var(--bg-dark);
+}
