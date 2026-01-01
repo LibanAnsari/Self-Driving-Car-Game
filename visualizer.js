@@ -58,30 +58,12 @@ class Visualizer{
 
         for (let i = 0; i < inputs.length; i++) {
             const x = Visualizer.#getNodeX(inputs, i, left, right);
-            
-            ctx.beginPath();
-            ctx.arc(x, bottom, nodeRadius, 0, Math.PI*2);
-            ctx.fillStyle = "black";
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(x, bottom, nodeRadius*0.6, 0, Math.PI*2);
-            ctx.fillStyle = getRGBA(inputs[i]);
-            ctx.fill();
+            Visualizer.#drawNode(ctx, x, bottom, nodeRadius, inputs[i]);
         }
         
         for (let i = 0; i < outputs.length; i++) {
             const x = Visualizer.#getNodeX(outputs, i, left, right);
-            
-            ctx.beginPath();
-            ctx.arc(x, top, nodeRadius, 0, Math.PI*2);
-            ctx.fillStyle = "black";
-            ctx.fill();
-
-            ctx.beginPath();
-            ctx.arc(x, top, nodeRadius*0.6, 0, Math.PI*2);
-            ctx.fillStyle = getRGBA(outputs[i]);
-            ctx.fill();
+            Visualizer.#drawNode(ctx, x, top, nodeRadius, outputs[i]);
 
             ctx.beginPath();
             ctx.lineWidth = 2;
@@ -103,6 +85,31 @@ class Visualizer{
                 ctx.strokeText(outputLabels[i], x, top + nodeRadius*0.1);
             }
         }
+    }
+
+    static #drawNode(ctx, x, y, radius, value){
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI*2);
+        ctx.fillStyle = "black";
+        ctx.fill();
+        ctx.strokeStyle = "white";
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(x, y, radius*0.6, 0, Math.PI*2);
+        
+        const alpha = Math.abs(value);
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius*0.6);
+        if(value > 0){
+            gradient.addColorStop(0, `rgba(255, 255, 100, ${alpha})`);
+            gradient.addColorStop(1, `rgba(255, 180, 0, ${alpha})`);
+        } else {
+            gradient.addColorStop(0, `rgba(100, 255, 255, ${alpha})`);
+            gradient.addColorStop(1, `rgba(0, 200, 255, ${alpha})`);
+        }
+        ctx.fillStyle = gradient;
+        ctx.fill();
     }
 
     static #getNodeX(nodes, index, left, right){

@@ -9,14 +9,13 @@
 </head>
 
 <body>
-    <div class="container">
-        <canvas id="carCanvas"></canvas>
-        <div id="verticalButtons">
-            <button onclick="save()">✅</button>
-            <button onclick="discard()">🗑️</button>
-        </div>
-        <canvas id="networkCanvas"></canvas>
+    <canvas id="carCanvas"></canvas>
+    <div id="verticalButtons">
+        <button onclick="save()">💾 Save</button>
+        <button onclick="discard()">🗑️ Delete</button>
+        <button onclick="window.location.reload()">🔄 Reload</button>
     </div>
+    <canvas id="networkCanvas"></canvas>
 
     <script src="car.js"></script>
     <script src="road.js"></script>

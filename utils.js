@@ -89,8 +89,16 @@ function sigmoid(x) {
 
 function getRGBA(value) {
     const alpha = Math.abs(value);
-    const R = value < 0 ? 0 : 255;
-    const G = R;
-    const B = value > 0 ? 0 : 255;
-    return "rgba("+R+","+G+","+B+","+alpha+")";
+    if(value > 0){
+        // Positive: Warm Orange/Gold
+        return "rgba(255, 180, 0, "+alpha+")";
+    }else{
+        // Negative: Cool Cyan/Blue
+        return "rgba(0, 200, 255, "+alpha+")";
+    }
+}
+
+function getRandom(seed){
+    const x = Math.sin(seed) * 10000;
+    return x - Math.floor(x);
 }

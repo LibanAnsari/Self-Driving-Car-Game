@@ -30,12 +30,13 @@ if(localStorage.getItem("bestBrain")){
 
 const trafficNumber = 50;
 const traffic = [];
+let seed = 1;
 for(let i = 0 ; i < trafficNumber ; i++){
-    const emptyLane = Math.floor(Math.random() * road.laneCount);
+    const emptyLane = Math.floor(getRandom(seed++) * road.laneCount);
     for(let j = 0; j < road.laneCount ; j++){
-        if(j != emptyLane && Math.random() > 0.5){
+        if(j != emptyLane && getRandom(seed++) > 0.5){
             traffic.push(
-                new Car(road.getLaneCenter(j),-100-i * 200, 30, Math.random() >= 0.5 ? 50 : 100, "DUMMY", 2)
+                new Car(road.getLaneCenter(j),-100-i * 200, 30, getRandom(seed++) >= 0.5 ? 50 : 100, "DUMMY", 2)
             );
         }
     }
