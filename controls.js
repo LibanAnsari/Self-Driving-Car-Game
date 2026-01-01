@@ -36,7 +36,7 @@ class Controls{
                 default:
                     break;
             }
-            console.table(this);
+            // console.table(this);
         }
         document.onkeyup = (event) => {
             switch(event.key){

@@ -1,8 +1,8 @@
-function lerp(A, B, t){
-    return A + (B - A)*t;
+function lerp(A, B, t) {
+    return A + (B - A) * t;
 }
 
-function getIntersection(A, B, C, D){
+function getIntersection(A, B, C, D) {
     /*
         Ix = Ax + (Bx - Ax)t = Cx + (Dx - Cx)u (linear interpolation for x) ...eq1
         Iy = Ay + (By - Ay)t = Cy + (Dy - Cy)u (linear interpolation for y) ...eq2
@@ -39,14 +39,14 @@ function getIntersection(A, B, C, D){
         bottom = same
     */
 
-    const tTop = (D.y - C.y)*(A.x - C.x) - (D.x - C.x)*(A.y - C.y);
-    const uTop = (C.x - A.x)*(A.y - B.y) - (C.y - A.y)*(A.x - B.x);
-    const bottom = (D.x - C.x)*(B.y - A.y) - (D.y - C.y)*(B.x - A.x);
+    const tTop = (D.y - C.y) * (A.x - C.x) - (D.x - C.x) * (A.y - C.y);
+    const uTop = (C.x - A.x) * (A.y - B.y) - (C.y - A.y) * (A.x - B.x);
+    const bottom = (D.x - C.x) * (B.y - A.y) - (D.y - C.y) * (B.x - A.x);
 
-    if(bottom != 0){
+    if (bottom != 0) {
         const t = tTop / bottom;
         const u = uTop / bottom;
-        if(t >= 0 && t <= 1 && u >= 0 && u <= 1){ // return only valid values in range [0, 1]
+        if (t >= 0 && t <= 1 && u >= 0 && u <= 1) { // return only valid values in range [0, 1]
             return {
                 x: lerp(A.x, B.x, t),
                 y: lerp(A.y, B.y, t),
@@ -59,9 +59,9 @@ function getIntersection(A, B, C, D){
 }
 
 
-function polyIntersect(poly1, poly2){
-    for(let i = 0 ; i < poly1.length ; i++){
-        for(let j = 0 ; j < poly2.length ; j++){
+function polyIntersect(poly1, poly2) {
+    for (let i = 0; i < poly1.length; i++) {
+        for (let j = 0; j < poly2.length; j++) {
             const touch = getIntersection(
                 poly1[i],
                 poly1[(i + 1) % poly1.length],
@@ -69,7 +69,7 @@ function polyIntersect(poly1, poly2){
                 poly2[(j + 1) % poly2.length]
             );
 
-            if(touch){
+            if (touch) {
                 return true;
             }
         }
@@ -78,10 +78,19 @@ function polyIntersect(poly1, poly2){
     return false;
 }
 
-function relu(x){
+function relu(x) {
     return Math.max(0, x);
 }
 
-function sigmoid(x){
+function sigmoid(x) {
     return 1 / (1 + Math.exp(-x));
+}
+
+
+function getRGBA(value) {
+    const alpha = Math.abs(value);
+    const R = value < 0 ? 0 : 255;
+    const G = R;
+    const B = value > 0 ? 0 : 255;
+    return "rgba("+R+","+G+","+B+","+alpha+")";
 }

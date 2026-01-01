@@ -34,7 +34,7 @@ class Car{
             this.sensor.update(roadBorders, traffic);
             const offsets = this.sensor.readings.map(e => e == null ? 0 : 1 - e.offset);
             const outputs = NeuralNetwork.forward(offsets, this.brain);
-            console.log(outputs);
+            // console.log(outputs);
 
             if(this.useBrain){
                 this.controls.forward = outputs[0];
@@ -128,13 +128,19 @@ class Car{
         this.x -= Math.sin(this.angle)*this.speed;
         this.y -= Math.cos(this.angle)*this.speed;
     }
+    
+    draw(ctx, color, drawSensor = false){
+        if(this.sensor && drawSensor){
+            this.sensor.draw(ctx);
+        }
 
-    draw(ctx, color){
         if(this.damaged){
             ctx.fillStyle = "gray";
         }else{
             ctx.fillStyle = color;
         }
+
+        
 
         // Draw the car using corner points of the poylgon
         // ctx.beginPath();
@@ -172,8 +178,6 @@ class Car{
         ctx.fill();
         ctx.restore();
 
-        if(this.sensor){
-            this.sensor.draw(ctx);
-        }
+        
     }
 }
