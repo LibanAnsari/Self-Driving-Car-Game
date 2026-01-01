@@ -4,11 +4,7 @@ A self-driving car simulation built from scratch using JavaScript. This project 
 
 ## ✨ Showcase
 
-<video controls style="max-width: 100%;">
-  <source src="assets/example.mp4" type="video/mp4">
-  <source src="assets/example.webm" type="video/webm">
-  Your browser does not support the video tag.
-</video>
+![Self-driving car demo](https://raw.githubusercontent.com/LibanAnsari/Self-Driving-Car-Game/main/assets/example.gif)
 
 ---
 
