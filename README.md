@@ -2,7 +2,13 @@
 
 A self-driving car simulation built from scratch using JavaScript. This project demonstrates how a neural network and genetic algorithm can learn to drive a car through traffic without crashing.
 
-## 🌟 Features
+## � Showcase
+
+<video src="assets/example.mkv" controls="controls" style="max-width: 100%;">
+    Your browser does not support the video tag.
+</video>
+
+## �🌟 Features
 
 -   **Neural Network**: A fully connected feed-forward neural network implemented from scratch (no libraries).
 -   **Genetic Algorithm**: Uses natural selection to evolve the cars. The best performing car's "brain" is saved and mutated for the next generation.
@@ -33,10 +39,14 @@ The simulation runs automatically. You can interact with the process using the c
 ```
 /
 ├── index.html      # Main entry point
-├── style.css       # Styling for the simulation and UI
+├── assets/         # Media assets
+│   └── example.mkv # Showcase video
+├── style/          # Styles
+│   └── style.css   # Styling for the simulation and UI
 ├── README.md       # Project documentation
 └── js/             # JavaScript source files
     ├── main.js     # Main game loop and initialization
+
     ├── car.js      # Car physics and logic
     ├── network.js  # Neural Network implementation
     ├── sensor.js   # Ray-casting sensor logic
